@@ -1,0 +1,67 @@
+body{
+    /* background-image: url("./sunset.jpg"); */
+    background-color: rgb(100, 201, 235);
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-position: center center;
+    min-height: 100%; */
+}
+
+#weather-info{
+    display: flex;
+}
+
+.card-header{
+    text-align: center;
+}
+
+.list-group-item:hover{
+    background-color: rgb(213, 234, 241);
+}
+
+.navbar {
+    background-color: rgb(58, 55, 55);
+}
+
+h1{
+    color: rgb(74, 83, 219);
+    font-size: 100px;
+    font-weight: bold;
+}
+
+.card{
+    margin-top: 25px;
+}
+
+#weather-results{
+    /* background-image: url("./rainbow.jpg"); */
+    background-image: url("./sunset.jpg");
+    background-size: cover;
+    width: 18rem;
+    margin-top: 25px;
+    margin-left: 25px;
+    color: rgb(38, 50, 223);
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.city-name{
+    font-weight: bolder;
+}
+
+.city-name, .date, .temp{
+    text-align: center;
+}
+
+.temp{
+    font-size: 25px;
+}
+
+.weather-icon{
+    display: block;
+    margin: auto;
+}
+
+.hide{
+    display: none;
+}
