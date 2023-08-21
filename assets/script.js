@@ -12,13 +12,36 @@ var weatherResults = document.querySelector(".hide");
 function displayCurrentWeather(data){
     cityName.textContent = data.name;
     date.textContent = dayjs.unix(data.dt).format("MM/DD/YYYY");
-    weatherIcon.src = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`
-    temp.textContent = `${data.main.temp}° F`
-    humidity.textContent = `Humidity: ${data.main.humidity} %`
-    windSpeed.textContent = `Wind Speed: ${data.wind.speed} MPH`
+    weatherIcon.src = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+    temp.textContent = `${data.main.temp}° F`;
+    humidity.textContent = `Humidity: ${data.main.humidity} %`;
+    windSpeed.textContent = `Wind Speed: ${data.wind.speed} MPH`;
 
 }
+
+function displayForecast(data) {
+
+  for (let i = 0; i < data.list.length; i++) {
+    const forecastDate = dayjs.unix(data.list[i].dt).format("MM/DD/YYYY");
+    const forecastIcon = data.list[i].weather[0].icon;
+    const forecastTemp = `${data.list[i].main.temp}° F`;
+    const forecastHumidity = `Humidity: ${data.list[i].main.humidity} %`;
+    const forecastWind = `Wind Speed: ${data.list[i].wind.speed} MPH`
+
+    const iconUrl = `https://openweathermap.org/img/w/${forecastIcon}.png`;
+
+    const forecast = document.getElementById(`#day${i + 1}`);
+    forecast.querySelector(".forecast-date").textContent = forecastDate;
+    forecast.querySelector(".forecast-icon").src = iconUrl;
+    forecast.querySelector(".forecast-temp").textContent = forecastTemp;
+    forecast.querySelector(".forecast-humidity").textContent = forecastHumidity;
+    forecast.querySelector(".forecast-wind").textContent = forecastWind;
+}
+
+}
+
 document.querySelector(".btn").addEventListener("click", handleSearchFormSubmit)
+
 function handleSearchFormSubmit(e) {
 
     weatherResults.classList.remove("hide");
@@ -52,18 +75,7 @@ function handleSearchFormSubmit(e) {
         console.error(err)
       })
   }
-// function currentWeather(){
-//     var url = "https://api.openweathermap.org/data/2.5/weather?appid=7ab439372a6b7834b1058543aced3bee&q=atlanta&units=imperial"
-//     fetch(url)
-//         .then(response => {
-//             console.log(response);
-//             response.json()
-            
-//         })
-//         .then(data => console.log(data))
 
-//         .catch(err => alert(err.message))
-// }
 function fetchWeather(location) {
     var { lat, lon, name } = location
   
@@ -88,7 +100,7 @@ function fetchWeather(location) {
           })
           .then(function (data) {
             console.log(data)
-            //displayForecast(data.list)
+            displayForecast(data)
           })
       })
       .catch(function (err) {
@@ -96,27 +108,3 @@ function fetchWeather(location) {
       })
   }
 
-// fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=ee5aadde629a52e00ec9baf6c42378d5&units=imperial")
-// .then(response => response.JSON)
-// .then(data => console.log(data))
-
-// .catch(err => alert("Wrong city name!"))
-
-
-
-
-//  console.log(city);
-
-// function renderWeather() {
-//     var currentWeather = $("#weather-results")
-// }
-
-// function fetchWeather() {
-//     var weatherUrl = "api.openweathermap.org/data/2.5/forecast?q="+ city +"&appid=ee5aadde629a52e00ec9baf6c42378d5"
-
-//     fetch(weatherUrl)
-//     .then((response) => response.json())
-//     .then((data) => console.log(data));
-// }
-
-// fetchWeather();

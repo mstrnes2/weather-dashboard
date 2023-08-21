@@ -7,9 +7,9 @@ body{
     min-height: 100%; */
 }
 
-#weather-info{
+/* #weather-info{
     display: flex;
-}
+} */
 
 .card-header{
     text-align: center;
@@ -45,6 +45,10 @@ h1{
     border-radius: 5px;
 }
 
+.current-weather{
+    display: flex;
+}
+
 .city-name{
     font-weight: bolder;
 }
@@ -64,4 +68,20 @@ h1{
 
 .hide{
     display: none;
+}
+
+#forecast{
+    display: flex;
+}
+
+#day1, #day2, #day3, #day4, #day5{
+    background-image: url("./sunset.jpg");
+    background-size: cover;
+    width: 18rem;
+    margin-top: 25px;
+    margin-left: 25px;
+    color: rgb(38, 50, 223);
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
 }

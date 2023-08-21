@@ -27,31 +27,68 @@
     </nav>
 
     <div id = "weather-info">
-      <div>
-          <div class="card" style="width: 18rem;">
-              <div class="card-header">
-                Featured
-              </div>
-              <ul class="list-group list-group-flush">
-                <button class="list-group-item">Memphis, TN</button>
-                <button class="list-group-item">Atlanta, GA</button>
-                <button class="list-group-item">Charlotte, NC</button>
-                <button class="list-group-item">Los Angeles, CA</button>
-                <button class="list-group-item">Dallas, TX</button>
-              </ul>
-          </div>
+      <div class = "current-weather">
+        <div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                  Featured
+                </div>
+                <ul class="list-group list-group-flush">
+                  <button class="list-group-item">Memphis, TN</button>
+                  <button class="list-group-item">Atlanta, GA</button>
+                  <button class="list-group-item">Charlotte, NC</button>
+                  <button class="list-group-item">Los Angeles, CA</button>
+                  <button class="list-group-item">Dallas, TX</button>
+                </ul>
+            </div>
+        </div>
+
+        <div class="hide" id = "weather-results">
+          <h2 class="city-name"></h2>
+          <p class = "date"></p>
+          <img class = "weather-icon">
+          <p class = "temp"></p>
+          <p class = "humidity"></p>
+          <p class = "wind-speed"></p>
+        </div>
       </div>
 
-      <div class="hide" id = "weather-results">
-        <h2 class="city-name"></h2>
-        <p class = "date"></p>
-        <img class = "weather-icon">
-        <p class = "temp"></p>
-        <p class = "humidity"></p>
-        <p class = "wind-speed"></p>
+      <div id = "forecast">
+        <div id = "day1">
+          <p class = "forecast-date"></p>
+          <img class = "forecast-icon">
+          <p class = "forecast-temp"></p>
+          <p class = "forecast-humidity"></p>
+          <p class = "forecast-wind"></p>
+        <div id = "day2">
+          <p class = "forecast-date"></p>
+          <img class = "forecast-icon">
+          <p class = "forecast-temp"></p>
+          <p class = "forecast-humidity"></p>
+          <p class = "forecast-wind"></p>
+        </div>
+        <div id = "day3">
+          <p class = "forecast-date"></p>
+          <img class = "forecast-icon">
+          <p class = "forecast-temp"></p>
+          <p class = "forecast-humidity"></p>
+          <p class = "forecast-wind"></p>
+        </div>
+        <div id = "day4">
+          <p class = "forecast-date"></p>
+          <img class = "forecast-icon">
+          <p class = "forecast-temp"></p>
+          <p class = "forecast-humidity"></p>
+          <p class = "forecast-wind"></p>
+        </div>
+        <div id = "day5">
+          <p class = "forecast-date"></p>
+          <img class = "forecast-icon">
+          <p class = "forecast-temp"></p>
+          <p class = "forecast-humidity"></p>
+          <p class = "forecast-wind"></p>
+        </div>
       </div>
-
-      <div id = "forecast"></div>
 
     </div>
 
