@@ -3,13 +3,8 @@ body{
     background-color: rgb(100, 201, 235);
     background-size: cover;
     background-repeat: no-repeat;
-    /* background-position: center center;
-    min-height: 100%; */
 }
 
-/* #weather-info{
-    display: flex;
-} */
 
 .card-header{
     text-align: center;
@@ -31,6 +26,10 @@ h1{
 
 .card{
     margin-top: 25px;
+}
+
+.card-header{
+    font-weight: bold;
 }
 
 #weather-results{

@@ -8,6 +8,48 @@ var searchInput = document.querySelector(".location");
 var weatherApiRootUrl = 'https://api.openweathermap.org';
 var apiKey = "7ab439372a6b7834b1058543aced3bee";
 var weatherResults = document.querySelector(".hide");
+var searchCityBtn = document.querySelector(".btn");
+
+updateFavoriteCitiesList();
+
+searchCityBtn.addEventListener("click", function(event) {
+  event.preventDefault();
+  var cityName = document.querySelector(".location").value.trim();
+
+
+  var favoriteCities = JSON.parse(localStorage.getItem("favoriteCities")) || [];
+
+  favoriteCities.push(cityName);
+
+  localStorage.setItem("favoriteCities", JSON.stringify(favoriteCities));
+
+  updateFavoriteCitiesList();
+});
+
+function updateFavoriteCitiesList() {
+  var favoriteCities = JSON.parse(localStorage.getItem("favoriteCities")) || [];
+  var listGroup = document.querySelector(".list-group");
+  
+  listGroup.innerHTML = ""; 
+
+  for (var i = 0; i < 5; i++) {
+    const favCityEl = document.createElement("button");
+    favCityEl.setAttribute("class", "list-group-item");
+    favCityEl.textContent = favoriteCities[i];
+    listGroup.append(favCityEl);
+  }
+}
+
+var favCityBtn = document.querySelectorAll(".list-group-item");
+
+for (var i = 0; i < favCityBtn.length; i++) {
+  favCityBtn[i].addEventListener("click", function(event) {
+    var cityName = event.target.textContent;
+    fetchCoords(cityName);
+    weatherResults.classList.remove("hide");
+  });
+}
+
 
 function displayCurrentWeather(data){
     cityName.textContent = data.name;
@@ -16,7 +58,6 @@ function displayCurrentWeather(data){
     temp.textContent = `${data.main.temp}° F`;
     humidity.textContent = `Humidity: ${data.main.humidity} %`;
     windSpeed.textContent = `Wind Speed: ${data.wind.speed} MPH`;
-
 }
 
 function displayForecast(data) {
@@ -30,7 +71,7 @@ function displayForecast(data) {
 
     const iconUrl = `https://openweathermap.org/img/w/${forecastIcon}.png`;
 
-    const forecast = document.getElementById(`#day${i + 1}`);
+    const forecast = document.getElementById("day" + (i + 1));
     forecast.querySelector(".forecast-date").textContent = forecastDate;
     forecast.querySelector(".forecast-icon").src = iconUrl;
     forecast.querySelector(".forecast-temp").textContent = forecastTemp;
@@ -66,7 +107,7 @@ function handleSearchFormSubmit(e) {
         if (!data[0]) {
           alert('Location not found')
         } else {
-          console.log(data[0])
+          //console.log(data[0])
           //appendToHistory(search)
           fetchWeather(data[0])
         }
@@ -90,7 +131,7 @@ function fetchWeather(location) {
         return res.json()
       })
       .then(function (data) {
-        console.log(data)
+        //console.log(data)
         displayCurrentWeather(data)
       })
       .then(function () {
@@ -99,7 +140,7 @@ function fetchWeather(location) {
             return res.json()
           })
           .then(function (data) {
-            console.log(data)
+            //console.log(data)
             displayForecast(data)
           })
       })
